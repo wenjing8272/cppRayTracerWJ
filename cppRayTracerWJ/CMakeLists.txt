@@ -3,7 +3,7 @@
 #
 
 # 将源代码添加到此项目的可执行文件。
-add_executable (cppRayTracerWJ "cppRayTracerWJ.cpp" "cppRayTracerWJ.h")
+add_executable (cppRayTracerWJ "main.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET cppRayTracerWJ PROPERTY CXX_STANDARD 20)
