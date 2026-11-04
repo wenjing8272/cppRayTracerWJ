@@ -13,3 +13,10 @@ project ("cppRayTracerWJ")
 
 # 包含子项目。
 add_subdirectory ("cppRayTracerWJ")
+
+# 
+target_compile_definitions(${PROJECT_NAME} PRIVATE 
+	STB_IMAGE_WRITE_IMPLEMENTATION
+)
+# 
+target_include_directories(cppRayTracerWJ PRIVATE thirdParty/stb)
