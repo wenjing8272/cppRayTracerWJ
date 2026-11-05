@@ -4,33 +4,33 @@
 namespace WCRT{
 	class Vector3 {
 	public:
-		double e[3];
+		float e[3];
 
 	public:
 		~Vector3() = default;
 		Vector3() :e{ 0.0, 0.0, 0.0 } {}
-		Vector3(double ix, double iy, double iz) :e{ ix,iy,iz } {}
+		Vector3(float ix, float iy, float iz) :e{ ix,iy,iz } {}
 
-		double x()const
+		float x()const
 		{
 			return e[0];
 		}
-		double y()const
+		float y()const
 		{
 			return e[1];
 		}
-		double z()const
+		float z()const
 		{
 			return e[2];
 		}
 		Vector3 operator-()const {
 			return Vector3(-e[1], -e[2], -e[3]);
 		}
-		const double& operator[](int i) const
+		const float& operator[](int i) const
 		{
 			return e[i];
 		}
-		double& operator[](int i)
+		float& operator[](int i)
 		{
 			return e[i];
 		}
@@ -41,22 +41,22 @@ namespace WCRT{
 			this->e[2] += vec.z();
 			return *this;
 		}
-		Vector3& operator*=(double v)
+		Vector3& operator*=(float v)
 		{
 			this->e[0] *= v;
 			this->e[1] *= v;
 			this->e[2] *= v;
 			return *this;
 		}
-		Vector3& operator/=(double v)
+		Vector3& operator/=(float v)
 		{
 			return *this *= (1 / v);
 		}
-		double sqrLength()const
+		float sqrLength()const
 		{
 			return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
 		}
-		double length()const
+		float length()const
 		{
 			return std::sqrt(sqrLength());
 		}
@@ -79,26 +79,26 @@ namespace WCRT{
 					   v1.y() * v2.y(),
 					   v1.z() * v2.z());
 	}
-	inline Vector3 operator*(double value, const Vector3& v)
+	inline Vector3 operator*(float value, const Vector3& v)
 	{
 		return Vector3(v.x() * value,
 					   v.y() * value,
 			           v.z() * value);
 	}
-	inline Vector3 operator*(const Vector3& v, double value)
+	inline Vector3 operator*(const Vector3& v, float value)
 	{
 		return value * v;
 	}
-	inline Vector3 operator/(const Vector3& v, double value)
+	inline Vector3 operator/(const Vector3& v, float value)
 	{
 		return (1 / value) * v;
 	}
 	inline void normalize(Vector3& vec3)
 	{
-		double length = vec3.length();
+		float length = vec3.length();
 		vec3 /= (length + 0.00001);
 	}
-	inline double dotProduct(const Vector3& v1, const Vector3& v2)
+	inline float dotProduct(const Vector3& v1, const Vector3& v2)
 	{
 		return v1.x() * v2.x() + v1.y() * v2.y() + v1.z() * v2.z();
 	}
@@ -108,4 +108,7 @@ namespace WCRT{
 					   v1.z() * v2.x() - v1.x() * v2.z(), 
 					   v1.x() * v2.y() - v1.y() * v2.x());
 	}
+
+	using Color = Vector3;
+	using Point3 = Vector3;
 }
